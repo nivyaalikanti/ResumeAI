@@ -1,12 +1,61 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 🧠 ResumeBuilder with AI
 
-## Expanding the ESLint configuration
+### ✨ Build professional resumes effortlessly with the power of AI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ResumeAI is a web application that helps users create modern, personalized, and professional resumes in minutes.
+Powered by **Gemini AI**, it enhances resume content, suggests better phrasing, and helps users highlight their strengths with minimal effort.
+
+---
+
+## 🚀 Features
+
+✅ **AI-Powered Resume Writing** – Generate and create your resume instantly using Gemini API
+✅ **Customizable Templates** – Choose elegant layouts that fit your profession
+✅ **Live Preview** – See changes instantly as you edit
+✅ **Download as PDF** – Export resumes in a single click
+✅ **Built with Modern Stack** – React + Vite for lightning-fast performance
+
+---
+
+
+
+## 🛠️ Tech Stack
+
+| Category        | Technologies Used |
+| --------------- | ----------------- |
+| Frontend        | React             |
+| Styling         | CSS               |
+| AI Integration  | Gemini API        |
+| PDF Export      | html2pdf.js       |
+| Version Control | Git & GitHub      |
+
+---
+
+## ⚙️ Installation & Setup
+
+```bash
+git clone https://github.com/<nivyaalikanti>/ResumeAI.git
+cd ResumeAI
+npm install
+npm run dev
+```
+
+Create `.env`:
+
+```
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+
+---
+
+
+## 🧑‍💻 Authors
+
+**Alikanti Nivya** 
+**Kotha Prajwala** 
+**Sk. Shiguftha Shameem** 
