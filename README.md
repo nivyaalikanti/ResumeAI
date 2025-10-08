@@ -13,11 +13,11 @@ Powered by **Gemini AI**, it enhances resume content, suggests better phrasing, 
 
 ## 🚀 Features
 
-✅ **AI-Powered Resume Writing** – Generate and create your resume instantly using Gemini API
-✅ **Customizable Templates** – Choose elegant layouts that fit your profession
-✅ **Live Preview** – See changes instantly as you edit
-✅ **Download as PDF** – Export resumes in a single click
-✅ **Built with Modern Stack** – React + Vite for lightning-fast performance
+✅ **AI-Powered Resume Writing** – Generate and create your resume instantly using Gemini API<br>
+✅ **Customizable Templates** – Choose elegant layouts that fit your profession<br>
+✅ **Live Preview** – See changes instantly as you edit<br>
+✅ **Download as PDF** – Export resumes in a single click<br>
+✅ **Built with Modern Stack** – React + Vite for lightning-fast performance<br>
 
 ---
 
@@ -56,6 +56,6 @@ VITE_GEMINI_API_KEY=your_gemini_api_key_here
 
 ## 🧑‍💻 Authors
 
-**Alikanti Nivya** 
-**Kotha Prajwala** 
-**Sk. Shiguftha Shameem** 
+**Alikanti Nivya** <br>
+**Kotha Prajwala** <br>
+**Sk. Shiguftha Shameem** <br>
