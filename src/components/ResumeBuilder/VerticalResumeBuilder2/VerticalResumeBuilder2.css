@@ -1,0 +1,410 @@
+*{
+  box-sizing: border-box;
+}
+/* Main container for the entire Resume Builder */
+.vertical-resume-builder-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+/* Left Panel - Input forms */
+.vertical-left-panel {
+  width: 400px;
+  padding: 20px;
+  background: white;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  scrollbar-width: thin;
+}
+
+.vertical-left-panel h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.input-section {
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #fdfdfd;
+  border-radius: 8px;
+  border: 1px solid #e8f4fd;
+}
+
+.input-section h3 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+.input-section input,
+.input-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.input-section textarea {
+  resize: vertical;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.array-item-group {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.array-item-group hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 10px 0;
+}
+
+.array-item-group button,
+.input-section > button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.array-item-group button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.input-section > button {
+  background-color: #27ae60;
+  color: white;
+  width: 100%;
+}
+
+/* Right Panel - The PDF preview area */
+.vertical-right-panel {
+  flex: 1;
+  margin-left: 400px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f0f2f5;
+}
+
+/* A4 Page Styling for the resume */
+.a4-page-vertical {
+  width: 21cm;
+  min-height: 29.7cm;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+/* Header Section (Name and Headline) */
+.header-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header-section h1 {
+  font-size: 2.2em; /* Change from rem to em */
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.header-section .header-headline {
+  font-size: 1em; /* Change from rem to em */
+  color: #555;
+  margin: 5px 0;
+  letter-spacing: 1px;
+}
+
+.header-section .header-divider {
+  border: none;
+  border-top: 1px solid #011c37;
+  width: 100%;
+  margin: 10px auto;
+}
+
+/* Main Content Wrapper (two columns) */
+.main-content-wrapper {
+  display: flex;
+  flex-grow: 1;
+}
+
+.left-column {
+  width: 35%;
+  padding-right: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.right-column {
+  width: 65%;
+  padding-left: 20px;
+}
+
+/* Section Headers */
+.left-column h2,
+.right-column h2 {
+  font-size: 1.1em; /* Change from rem to em */
+  font-weight: 700;
+  color: #34495e;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.left-column hr,
+.right-column hr {
+  border: none;
+  border-top: 1px solid #34495e;
+  margin-bottom: 15px;
+}
+
+/* Contact Section */
+/* Contact Section */
+.contact-section .contact-item {
+  /* Make the container a flexbox to align items horizontally */
+  display: flex;
+  align-items: center; 
+}
+.contact-section{
+  margin-bottom: 20px;
+}
+
+.contact-section .contact-item i {
+  /* The icon should have some space to its right */
+  color: #34495e;
+  margin-right: 8px;
+  font-size: 1em; /* Change from 0.9em to 1em */
+}
+
+.contact-section .contact-item p {
+  /* The text should now sit next to the icon */
+  font-size: 1em; /* Change from 0.9em to 1em */
+  color: #555;
+  margin: 0;
+}
+.contact-item{
+  flex-direction: row !important;
+}
+/* Skills & Languages */
+.skills-section ul,
+.languages-section ul {
+  list-style: disc;
+  padding-left: 0;
+  font-size: 1em; /* Change from 0.9em to 1em */
+}
+
+.skills-section li,
+.languages-section li {
+  margin-bottom: 5px;
+}
+
+/* Right Column Sections */
+.resume-section {
+  margin-bottom: 25px;
+}
+
+.profile-text {
+  font-size: 1em; /* Change from 0.9em to 1em */
+  color: #555;
+  line-height: inherit; /* Change from fixed 1.4 to inherit */
+}
+
+/* Work Experience & Education */
+.experience-item,
+.education-item {
+  margin-bottom: 15px;
+}
+
+.experience-header,
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.experience-header h3,
+.education-header h3 {
+  font-size: 1em; /* Change from rem to em */
+  margin: 0;
+  color: #34495e;
+}
+
+.company-name,
+.institution-name {
+  font-size: 1em; /* Change from 0.9em to 1em */
+  color: #555;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.job-dates,
+.education-dates {
+  font-size: 1em; /* Change from 0.9em to 1em */
+  color: #777;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.experience-item ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 5px;
+  font-size: 1em; /* Change from 0.9em to 1em */
+  color: #555;
+}
+
+.experience-item li {
+  margin-bottom: 3px;
+  word-wrap: break-word; /* Prevents overflow */
+  overflow-wrap: break-word; /* Prevents overflow */
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.download-btn,
+.compress-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.download-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.compress-btn {
+  background-color: #95a5a6;
+  color: white;
+}
+
+/* Print Styles */
+@media print {
+  /* Hides the entire left panel and action buttons. */
+  .vertical-left-panel,
+  .action-buttons,
+  .template-selector-btn-container,.navbar {
+    display: none !important;
+  }
+  
+  /* Resets the main container for a clean print. */
+  .vertical-resume-builder-container {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: auto !important;
+    background: white !important;
+  }
+
+  /*
+   * Corrected styles for the right panel
+   * This is the crucial fix for the left margin issue.
+   */
+  .vertical-right-panel {
+    margin-left: 0 !important; /* Forces the left margin to be zero */
+    width: 100% !important; /* Makes it fill the full width of the page */
+    flex: none !important; /* Disables flexbox sizing */
+    
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+  
+  /* The A4 page div itself. */
+  #a4-page-container {
+    width: 100% !important;
+    min-height: auto !important; 
+    margin: 0 auto !important; /* Centers the content */
+    padding: 1.5cm !important; /* Set a default padding for the content */
+    box-shadow: none !important;
+  }
+}
+
+/* New styles for margin and font inputs */
+.margin-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.margin-inputs label {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.input-section hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 15px 0;
+}
+
+/* Template selector button styles */
+.template-selector-btn-container {
+  position: fixed;
+  top: 120px; /* Below navbar */
+  right: 20px;
+  z-index: 100;
+}
+
+.btn-template {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #e6eaf1 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 2px solid rgb(0, 94, 255);
+  color: rgb(0, 106, 255);
+}
+
+.btn-template:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.resume-builder-container {
+  position: relative;
+  min-height: 100vh;
+}

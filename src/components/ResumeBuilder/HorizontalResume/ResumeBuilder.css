@@ -1,0 +1,424 @@
+/* Container for the entire Resume Builder page */
+.resume-builder-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Left Panel - The input form section */
+.left-panel {
+  width: 400px;
+  padding: 20px;
+  background: white;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Panel */
+.right-panel {
+  flex: 1;
+  margin-left: 400px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f8f9fa;
+  width: calc(100% - 400px);
+  box-sizing: border-box;
+}
+
+/* A4 Page Container - CRITICAL FIXES */
+#a4-page-container {
+  width: 21cm !important;
+  min-height: 29.7cm !important;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  /* Critical: Ensure content stays within bounds */
+  max-width: 21cm !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.a4-page {
+  width: 100%;
+  height: 100%;
+  background: white;
+  box-sizing: border-box;
+}
+
+/* Resume content styling - CRITICAL FIXES */
+.resume-section {
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  page-break-inside: avoid;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 0.5cm;
+}
+
+.resume-section.header {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.resume-section p,
+.resume-section li,
+.resume-section h1,
+.resume-section h3,
+.resume-section h4 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.resume-section h1 {
+  font-size: 22pt;
+  font-weight: bold;
+  margin: 0 0 0.2cm 0;
+  text-align: center;
+  color: #2c3e50;
+  line-height: 1.2;
+}
+
+.resume-section h3 {
+  font-size: 13pt;
+  font-weight: bold;
+  border-bottom: 1px solid #555;
+  padding-bottom: 0.1cm;
+  margin: 0.5cm 0 0.3cm 0;
+  color: #2c3e50;
+  line-height: 1.3;
+}
+
+.resume-section p {
+  font-size: 10pt;
+  margin: 0 0 0.2cm 0;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+.resume-section ul {
+  list-style-type: disc;
+  padding-left: 1cm;
+  margin: 0.2cm 0;
+  max-width: 100%;
+}
+
+.resume-section li {
+  margin-bottom: 0.1cm;
+  line-height: 1.3;
+  max-width: 100%;
+  font-size: 10pt;
+}
+
+/* Contact info styling */
+.contact-info {
+  text-align: center;
+  font-size: 9pt;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+  max-width: 100%;
+}
+
+/* Section Headers */
+.section-header-right-aligned {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.2cm;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.section-header-right-aligned h4 {
+  margin: 0;
+  font-size: 11pt;
+  color: #2c3e50;
+  line-height: 1.3;
+  max-width: 70%;
+  flex: 1;
+}
+
+.section-header-right-aligned .duration {
+  font-style: italic;
+  font-size: 9pt;
+  color: #666;
+  text-align: right;
+  min-width: 4cm;
+}
+
+/* Experience, Education, Project items */
+.experience-item,
+.education-item,
+.project-item {
+  margin-bottom: 0.5cm;
+  max-width: 100%;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.download-btn,
+.compress-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.download-btn {
+  background: #27ae60;
+  color: white;
+}
+
+.compress-btn {
+  background: #95a5a6;
+  color: white;
+}
+
+/* Enhanced compressed mode */
+.compressed-mode .resume-section {
+  margin-bottom: 0.3cm;
+}
+
+.compressed-mode h1 {
+  font-size: 18pt;
+}
+
+.compressed-mode h3 {
+  font-size: 11pt;
+  margin: 0.3cm 0 0.2cm 0;
+}
+
+.compressed-mode p,
+.compressed-mode li {
+  font-size: 9pt;
+  line-height: 1.2;
+}
+
+.compressed-mode .section-header-right-aligned h4 {
+  font-size: 10pt;
+}
+
+.compressed-mode .section-header-right-aligned .duration {
+  font-size: 8pt;
+}
+
+.compressed-mode .contact-info {
+  font-size: 8pt;
+}
+
+/* Print Styles - CRITICAL FIXES */
+@media print {
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 21cm !important;
+    height: 29.7cm !important;
+    background: white !important;
+  }
+  
+  .resume-builder-container {
+    display: block !important;
+    background: white !important;
+    width: 21cm !important;
+    height: 29.7cm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .left-panel,
+  .action-buttons {
+    display: none !important;
+  }
+  
+  .right-panel {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    width: 21cm !important;
+    height: 29.7cm !important;
+    display: block !important;
+  }
+  
+  #a4-page-container {
+    box-shadow: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    width: 21cm !important;
+    min-height: 29.7cm !important;
+    padding: 0 !important;
+    max-width: 21cm !important;
+    background: white !important;
+  }
+  
+  /* Ensure content fits within page */
+  .resume-section {
+    max-width: 18cm !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .left-panel {
+    width: 350px;
+  }
+  
+  .right-panel {
+    margin-left: 350px;
+    width: calc(100% - 350px);
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-builder-container {
+    flex-direction: column;
+  }
+  
+  .left-panel {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  
+  .right-panel {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  #a4-page-container {
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
+}
+/* Add to your existing ResumeBuilder.css file */
+
+.textarea-with-ai-btn {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.textarea-with-ai-btn textarea {
+  width: 100%;
+  padding-right: 40px; /* Make space for the button */
+  box-sizing: border-box;
+}
+
+.ai-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-image: linear-gradient(to right, #3267d6, #00b4d8) !important;
+  color: white;
+  border: none;
+  padding: 5px 8px !important;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 10;
+  transition: background-color 0.3s;
+  box-shadow: none !important;
+}
+
+.ai-btn:hover {
+  background-color: #4553a0;
+}
+
+.ai-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+.rating-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.rating-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+}
+
+.stars {
+  font-size: 2rem;
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.filled-star { color: gold; }
+.empty-star { color: lightgray; }
+
+.rating-content button {
+  padding: 8px 15px;
+  border: none;
+  background-image: linear-gradient(to right, #3267d6, #00b4d8);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Template selector button styles */
+.template-selector-btn-container {
+  position: fixed;
+  top: 120px; /* Below navbar */
+  right: 20px;
+  z-index: 100;
+}
+
+.btn-template {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #e6eaf1 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 2px solid rgb(0, 94, 255);
+  color: rgb(0, 106, 255);
+}
+
+.btn-template:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.resume-builder-container {
+  position: relative;
+  min-height: 100vh;
+}

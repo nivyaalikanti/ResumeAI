@@ -1,0 +1,115 @@
+/* Header/Navbar Styles */
+/* Default Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: #ffffff; /* Opaque white by default */
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Scrolled Navbar Style */
+.navbar.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.944); /* Semi-transparent */
+  backdrop-filter: blur(10px);
+}
+
+.navbar .logo img {
+  height: 60px;
+}
+
+/* Navigation links section */
+.nav-links {
+  flex-grow: 1; /* Allows this section to take up available space */
+  display: flex;
+  justify-content: center; /* Center the links in the middle */
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #555555;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #000000;
+}
+
+/* Call-to-action buttons container */
+.cta-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Sign-In button style */
+.sign-in-btn {
+  text-decoration: none;
+  color: #333333;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.3s ease;
+}
+
+/* Start Free button style with gradient */
+.start-free-btn {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px; /* Adjust border-radius to match the shape */
+  color: white;
+  background-image: linear-gradient(to right, #3267d6, #00b4d8);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.start-free-btn:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+.welcome-message {
+  color: #333333;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+}
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-name {
+  color: #333;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: white;
+  border: 2px solid #c42104;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #b61c01;
+  transition: background 0.2s, color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #c42104;
+  color: white;
+}

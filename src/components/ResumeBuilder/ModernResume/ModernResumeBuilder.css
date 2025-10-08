@@ -1,0 +1,612 @@
+/* ModernResumeBuilder.css */
+
+/* Main Container */
+.modern-resume-builder-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+/* Template Selector Button */
+.template-selector-btn-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.btn-template {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-template:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Left Panel Styles */
+.modern-left-panel {
+  width: 400px;
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #e1e5e9;
+  overflow-y: auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modern-left-panel h2 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 24px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+/* Input Sections */
+.input-section {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+.input-section:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-section h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* Form Inputs */
+.input-section input,
+.input-section textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: white;
+  box-sizing: border-box;
+}
+
+.input-section input:focus,
+.input-section textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  transform: translateY(-1px);
+}
+
+.input-section textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+/* Input Rows for Date Fields */
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.input-row input {
+  flex: 1;
+}
+
+/* Array Item Groups */
+.array-item-group {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #e1e5e9;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.array-item-group:hover {
+  border-color: #3498db;
+}
+
+.array-item-group hr {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* Buttons */
+button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+button:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+
+.array-item-group button {
+  background: #e74c3c;
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+.array-item-group button:hover {
+  background: #c0392b;
+}
+
+/* Theme Section */
+.color-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.color-input-group label {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.color-picker {
+  width: 50px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Margin Inputs */
+.margin-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.margin-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.margin-input-group label {
+  color: #5d6d7e;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.margin-input-group input {
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+/* Right Panel Styles */
+.modern-right-panel {
+  flex: 1;
+  padding: 40px;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* A4 Page Container */
+.modern-a4-page {
+  width: 21cm;
+  min-height: 29.7cm;
+  background: white;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.modern-a4-page.compressed-mode {
+  font-size: 0.9em;
+}
+
+.modern-a4-page.compressed-mode .modern-section {
+  margin-bottom: 15px;
+}
+
+.modern-a4-page.compressed-mode .section-content {
+  padding: 8px 0;
+}
+
+/* Header Section */
+.modern-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #2c3e50;
+}
+
+.name-title {
+  flex: 2;
+}
+
+.name-title h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.professional-title {
+  font-size: 18px;
+  color: #3498db;
+  margin: 0;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-info {
+  flex: 1;
+  text-align: right;
+}
+
+.contact-info p {
+  margin: 4px 0;
+  color: #5d6d7e;
+  font-size: 14px;
+}
+
+/* Two Column Layout */
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Section Styles */
+.modern-section {
+  margin-bottom: 25px;
+}
+
+.modern-section h3 {
+  color: #2c3e50;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid;
+  padding-bottom: 5px;
+  font-weight: 600;
+}
+
+.section-content {
+  padding: 10px 0;
+}
+
+/* About Section */
+.about-text {
+  color: #5d6d7e;
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Education & Experience Items */
+.education-item,
+.experience-item {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.education-item:last-child,
+.experience-item:last-child {
+  margin-bottom: 0;
+}
+
+.date-range {
+  font-weight: bold;
+  color: #3498db;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.education-item h4,
+.experience-item h4 {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.degree,
+.job-title {
+  color: #5d6d7e;
+  font-size: 14px;
+  font-style: italic;
+  margin: 3px 0 8px 0;
+  font-weight: 500;
+}
+
+.description {
+  color: #7f8c8d;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 8px 0 0 0;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.skills-column {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skill-item {
+  color: #5d6d7e;
+  font-size: 14px;
+  padding: 3px 0;
+  line-height: 1.4;
+}
+
+/* References */
+.reference-item {
+  margin-bottom: 15px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #3498db;
+}
+
+.reference-item:last-child {
+  margin-bottom: 0;
+}
+
+.reference-item h4 {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+  margin: 0 0 3px 0;
+}
+
+.reference-position {
+  color: #5d6d7e;
+  font-size: 13px;
+  margin: 0 0 5px 0;
+  font-style: italic;
+}
+
+.reference-contact {
+  font-size: 12px;
+  color: #7f8c8d;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.compress-btn,
+.download-btn {
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.compress-btn {
+  background: #95a5a6;
+  color: white;
+}
+
+.compress-btn:hover {
+  background: #7f8c8d;
+  transform: translateY(-2px);
+}
+
+.download-btn {
+  background: #27ae60;
+  color: white;
+}
+
+.download-btn:hover {
+  background: #219a52;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .modern-resume-builder-container {
+    flex-direction: column;
+  }
+  
+  .modern-left-panel {
+    width: 100%;
+    height: auto;
+    position: static;
+    max-height: 50vh;
+  }
+  
+  .modern-right-panel {
+    padding: 20px;
+  }
+  
+  .two-column-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .template-selector-btn-container {
+    position: static;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .modern-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact-info {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .compress-btn,
+  .download-btn {
+    width: 200px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .modern-resume-builder-container {
+    background: white;
+  }
+  
+  .modern-left-panel,
+  .template-selector-btn-container,
+  .action-buttons {
+    display: none !important;
+  }
+  
+  .modern-right-panel {
+    padding: 0;
+    width: 100%;
+  }
+  
+  .modern-a4-page {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    min-height: auto;
+  }
+  
+  /* Ensure good print contrast */
+  .modern-section h3 {
+    color: #000 !important;
+  }
+  
+  .professional-title,
+  .date-range {
+    color: #666 !important;
+  }
+}
+
+/* Scrollbar Styling */
+.modern-left-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modern-left-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.modern-left-panel::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.modern-left-panel::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Animation for section additions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.array-item-group {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Focus states for accessibility */
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+/* Loading state for PDF generation */
+.modern-a4-page.generating-pdf {
+  opacity: 0.7;
+  pointer-events: none;
+}

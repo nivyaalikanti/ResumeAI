@@ -1,0 +1,123 @@
+.pricing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  background: #f7faff; /* light clean background */
+  min-height: 100vh;
+  text-align: center;
+}
+
+.pricing-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.pricing-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.pricing-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 50px 40px;
+  width: 400px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, #b9c6d5, #aac0c7);
+  transform: rotate(25deg);
+  opacity: 0.08;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 119, 255, 0.2);
+}
+
+/* Ribbon Badge */
+.free-badge {
+  position: absolute;
+  top: 47px;
+  right: -59px;
+  background: linear-gradient(135deg, #0077ff, #00c2ff);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 6px 60px;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 12px rgba(17, 93, 180, 0.241);
+}
+
+.plan-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.plan-price {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #0077ff;
+  margin-bottom: 25px;
+}
+
+.plan-price span {
+  font-size: 1rem;
+  color: #777;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.plan-features li {
+  font-size: 1.05rem;
+  margin: 12px 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.plan-features li::before {
+  content: "✔";
+  color: #00c2ff;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.get-started-btn {
+  background: linear-gradient(135deg, #0077ff, #00c2ff);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.get-started-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 119, 255, 0.3);
+}

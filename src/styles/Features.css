@@ -1,0 +1,106 @@
+/* Re-use variables from your main.css for consistency */
+:root {
+  --primary-blue: #3267D6;
+  --text-dark: #1A1A1A;
+  --text-medium: #555555;
+  --bg-light: #ffffff;
+  --border-color: #E0E0E0;
+}
+
+.features-section {
+  padding: 0rem 5%; /* Adjusted padding to match the design */
+  background: #f9f9f9;
+  text-align: center;
+  cursor:pointer;
+}
+
+.features-header {
+  max-width: 60%;
+  margin: 0 auto 3rem;
+  cursor: pointer;
+}
+
+.features-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.features-header p {
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.highlight-blue {
+  color: var(--primary-blue);
+}
+
+.feature-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background-color: var(--bg-light);
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+  box-shadow: 0px 10px 10px rgba(188, 205, 203, 0.411);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  /* Change the background color to white or the same as the card background */
+  background-color: #ffffff; 
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Style the icon image */
+.icon-container img {
+  /* Set a smaller, appropriate size for the icons */
+  width: 90px; 
+  height: 75px;
+  margin-bottom: 5px;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feature-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-header {
+    max-width: 90%;
+  }
+}

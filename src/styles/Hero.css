@@ -1,0 +1,145 @@
+/* Global font */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px 100px;
+  background: #f9f9f9;
+  flex-wrap: wrap;
+}
+
+/* LEFT SIDE */
+.hero-text {
+  max-width: 540px;
+}
+
+.stats {
+  display: flex;
+  gap: 18px;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  color: #666;
+}
+
+.stats .rating {
+  color: #ff9800;
+  font-weight: 600;
+}
+
+.hero-text h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111;
+}
+
+.hero-text h1 .highlight {
+  color: #027dae;
+}
+.hero-text p {
+  margin: 18px 0 18px;
+  font-size: 1.15rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.primary-btn {
+  background: linear-gradient(to right, #007bff, #01bdba);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.3);
+  transition: transform 0.2s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: white;
+  border: 2px solid #007bff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #007bff;
+  transition: background 0.2s, color 0.2s;
+}
+
+.secondary-btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+.trusted {
+  margin-top: 30px;
+  font-size: 0.95rem;
+  color: #777;
+}
+
+.companies {
+  display: flex;
+  gap: 20px;
+  margin-top: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+/* RIGHT SIDE */
+.hero-image {
+  position: relative;
+}
+
+.hero-image img {
+  width: 680px;  /* increased size */
+  border-radius: 16px;
+  box-shadow: 0 0 20px 20px rgba(189, 224, 213, 0.25);
+  animation: floatUpDown 5s ease-in-out infinite;
+}
+.hero-image .badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+  color: #111;
+  animation: floatUpDown 5s ease-in-out infinite;
+}
+.ai-optimized-badge{
+  margin-right: 500px;
+  margin-top: 300px;
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px); /* goes up */
+  }
+  100% {
+    transform: translateY(0px); /* back to original */
+  }
+}
