@@ -19,7 +19,14 @@ Powered by **Gemini AI**, it enhances resume content, suggests better phrasing, 
 * **Built with Modern Stack:** React  for fast performance.
 
 ---
+## Screenshots
 
+![Live Preview Screenshot](src/assets/screenshots/home.png)
+
+![Template Selection Screenshot](src/assets/screenshots/templates.png)
+![Template Selection Screenshot](src/assets/screenshots/resume1.png)
+![Template Selection Screenshot](src/assets/screenshots/resume2.png)
+![Template Selection Screenshot](src/assets/screenshots/ats.png)
 
 
 ##  Tech Stack
