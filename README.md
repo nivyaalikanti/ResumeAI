@@ -21,12 +21,15 @@ Powered by **Gemini AI**, it enhances resume content, suggests better phrasing, 
 ---
 ## Screenshots
 
-![Live Preview Screenshot](src/assets/screenshots/home.png)
+## Screenshots
 
-![Template Selection Screenshot](src/assets/screenshots/templates.png)
-![Template Selection Screenshot](src/assets/screenshots/resume1.png)
-![Template Selection Screenshot](src/assets/screenshots/resume2.png)
-![Template Selection Screenshot](src/assets/screenshots/ats.png)
+|           Home           |         Features Page      |
+| :----------------------: | :-----------------------: |
+| ![Home Page](src/assets/screenshots/home.png) | ![Features Page](src/assets/screenshots/features.png) |
+|       Templates Page      |         Resume Style 1      |
+| ![Templates](src/assets/screenshots/templates.png) | ![Resume 1](src/assets/screenshots/resume1.png) |
+|         Resume Style 2     |       ATS-Friendly Resume    |
+| ![Resume 2](src/assets/screenshots/resume2.png) | ![ATS Resume](src/assets/screenshots/ats.png) |
 
 
 ##  Tech Stack
