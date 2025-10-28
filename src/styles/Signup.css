@@ -4,21 +4,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #e9ecec 0%, #fdfdff 100%);
+  background: #f9f9f9;
   padding: 20px;
   margin-top: 0px;
 }
 
 .signup-card {
-  background: white;
+  background: rgb(255, 255, 255);
   padding: 40px;
   border-radius: 12px;
-  
+  box-shadow: 0 15px 35px rgba(223, 246, 247, 0.832);
   width: 100%;
   max-width: 400px;
 }
 .signup-card:hover{
-box-shadow: 0 15px 35px rgba(223, 246, 247, 0.589);
+box-shadow: 0 15px 35px rgba(223, 246, 247, 0.832);
 }
 .signup-card h2 {
   text-align: center;
@@ -37,7 +37,7 @@ box-shadow: 0 15px 35px rgba(223, 246, 247, 0.589);
 .signup-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 3px;
 }
 
 .form-group {

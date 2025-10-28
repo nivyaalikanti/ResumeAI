@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from "./context/UserContext";
-import Header from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from './components/About';
 import Features from "./components/Features";
@@ -12,6 +11,7 @@ import ATSScoreChecker from './components/ATSScoreChecker';
 import ResumeBuilder from "./components/ResumeBuilder/HorizontalResume/ResumeBuilder";
 // import VerticalResumeBuilder from "./components/ResumeBuilder/VeticalResumeBuilder/VerticalResumeBuilder";
 import ModernResumeBuilder from "./components/ResumeBuilder/ModernResume/ModernResumeBuilder";
+import Header from "./components/Navbar";
 import Signup from "./components/Signup"; // NEW
 import Login from "./components/Login";   // NEW
 import VerticalResumeBuilder from "./components/ResumeBuilder/VerticalResumeBuilder/VeticalResumeBuilder";
@@ -19,6 +19,8 @@ import PricingPage from "./components/PricingPage";
 import VerticalResumeBuilder2 from "./components/ResumeBuilder/VerticalResumeBuilder2/VerticalResumeBuilder2";
 import ResumeBuilder2 from './components/ResumeBuilder/HorizontalResume2/ResumeBuilder2';
 import VerticalResumeBuilder3 from "./components/ResumeBuilder/VerticalResumeBuilder3/VerticalResumeBuilder3";
+// Add this import at the top
+import CompleteProfile from './components/CompleteProfile';
 
 const LandingPage = ({ onTemplateSelect }) => (
   <>
@@ -54,6 +56,7 @@ function App() {
             <Route path="/detailed-pro" element={<ResumeBuilder2 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/complete-profile" element={<CompleteProfile />} />
           </Routes>
         </div>
       </Router>

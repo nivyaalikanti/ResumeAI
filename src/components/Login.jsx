@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Signup.css';
-import { useUser } from '../context/UserContext.jsx'; // Import the useUser hook
+import { useUser } from '../context/UserContext.jsx';
 
 function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useUser(); // Get login function from context
+  const { login } = useUser();
 
   const handleChange = (e) => {
     setFormData({
@@ -18,18 +19,51 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find(u => u.email === formData.email && u.password === formData.password);
-    
-    if (user) {
-      login(user); // Use context login function instead of direct localStorage
+    setLoading(true);
+
+    try {
+      // ✅ CALL YOUR BACKEND LOGIN API
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed');
+      }
+
+      // ✅ Create user object from backend response
+      const user = {
+        id: data.user.id,
+        email: data.user.email,
+        name: data.user.name || formData.email.split('@')[0], // Fallback name
+        token: data.token
+      };
+
+      // ✅ Save token and user to localStorage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(user));
+      
+      login(user); // Use context login function
+
       alert('Login successful!');
       navigate('/');
-    } else {
-      alert('Invalid email or password!');
+
+    } catch (error) {
+      console.error('Login error:', error);
+      alert(error.message || 'Invalid email or password!');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,8 +98,12 @@ function Login() {
             />
           </div>
 
-          <button type="submit" className="signup-btn">
-            Sign In
+          <button 
+            type="submit" 
+            className="signup-btn"
+            disabled={loading}
+          >
+            {loading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
 

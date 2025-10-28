@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function VerticalLeftPanel3({
   resumeData,
@@ -10,6 +10,72 @@ function VerticalLeftPanel3({
   onAIGenerateText,
   isGenerating
 }) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Fetch only essential user data from backend
+  const fetchEssentialUserData = async () => {
+    try {
+      setIsLoading(true);
+      const token = localStorage.getItem('token');
+      
+      const response = await fetch('http://localhost:5000/api/user/profile', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        const userData = await response.json();
+        console.log('Fetched essential user data for vertical resume 3:', userData);
+        
+        // Fill only the 5 essential fields if they are empty
+        if (userData.personalInfo) {
+          // Full Name
+          if (userData.personalInfo.fullName && !resumeData.personalDetails.name) {
+            onInputChange('personalDetails', 'name', userData.personalInfo.fullName);
+          }
+          
+          // Phone Number
+          if (userData.personalInfo.phone && !resumeData.personalDetails.phone) {
+            onInputChange('personalDetails', 'phone', userData.personalInfo.phone);
+          }
+          
+          // Email
+          if (userData.personalInfo.email && !resumeData.personalDetails.email) {
+            onInputChange('personalDetails', 'email', userData.personalInfo.email);
+          }
+          
+          // Address (using location field for address)
+          if (userData.personalInfo.address && !resumeData.personalDetails.location) {
+            onInputChange('personalDetails', 'location', userData.personalInfo.address);
+          }
+        }
+
+        // Summary/Profile
+        if (userData.summary && !resumeData.summary) {
+          onInputChange('summary', null, userData.summary);
+        }
+
+        // NOTE: We are NOT fetching work experience, education, skills, or other sections
+        // Let the user enter these manually
+
+      } else {
+        console.log('No user data found for vertical resume 3');
+      }
+    } catch (error) {
+      console.error('Error fetching user data for vertical resume 3:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Fetch essential data on component mount
+  useEffect(() => {
+    fetchEssentialUserData();
+  }, []);
+
   const handleDetailChange = (section, field, value) => {
     onInputChange(section, field, value);
   };
@@ -29,6 +95,13 @@ function VerticalLeftPanel3({
   return (
     <div className="vertical-left-panel">
       <h2>Enter Your Details</h2>
+
+      {/* Loading indicator */}
+      {isLoading && (
+        <div className="loading-indicator">
+          <p>Loading your profile data...</p>
+        </div>
+      )}
 
       {/* Personal Details Section */}
       <div className="input-section">
@@ -144,7 +217,6 @@ function VerticalLeftPanel3({
         <h3>Other (Certifications, etc.)</h3>
         {resumeData.other.map((item, index) => (
           <div key={index} className="array-item-group">
-            // CORRECTED CODE:
             <input type="text" placeholder="Title (e.g., AWS Certified)" value={item.title} onChange={(e) => handleArrayChange('other', index, 'title', e.target.value)} />
             <input type="text" placeholder="Details (e.g., Issued 2020)" value={item.details} onChange={(e) => handleArrayChange('other', index, 'details', e.target.value)} />
             <button type="button" onClick={() => handleAddRemove('other', 'remove', index)}>Remove Item</button>

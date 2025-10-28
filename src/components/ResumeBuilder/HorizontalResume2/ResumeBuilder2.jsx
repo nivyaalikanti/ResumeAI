@@ -15,36 +15,36 @@ function ResumeBuilder2() {
     responsibilities: '',
   };
   const initialEducation = {
-    degree: 'B.S. in Computer Science',
-    institution: 'State University',
-    startDate: 'Sept 2016',
-    endDate: 'May 2020',
+    degree: '',
+    institution: '',
+    startDate: '',
+    endDate: '',
   };
   const initialSkillCategory = {
-    heading: 'Programming Languages',
-    skills: 'Python, JavaScript, Go, SQL',
+    heading: '',
+    skills: '',
   };
-  const initialAchievement = 'Awarded "Employee of the Quarter" Q4 2022.';
+  const initialAchievement = '';
   const initialCertification = {
-    name: 'AWS Certified Developer',
-    issuer: 'Amazon Web Services',
-    date: 'Dec 2021',
+    name: '',
+    issuer: '',
+    date: '',
   };
   const initialProject = {
-    name: 'E-commerce Platform Redesign',
-    startDate: 'Mar 2023',
-    endDate: 'Jun 2023',
-    description: 'Led the front-end redesign, resulting in a 25% increase in conversion rate.\nImplemented testing suite achieving 95% code coverage.',
+    name: '',
+    startDate: '',
+    endDate: '',
+    description: '',
   };
 
   const [resumeData, setResumeData] = useState({
     personalDetails: {
-      name: 'Alex Johnson',
-      headline: 'Full-Stack Developer | CI/CD Automation Expert',
-      email: 'alex.johnson@example.com',
-      phone: '(555) 555-1234',
-      address: 'Seattle, WA',
-      website: 'linkedin.com/in/alexjohnson',
+      name: '',
+      headline: '',
+      email: '',
+      phone: '',
+      address: '',
+      website: '',
     },
     
     experience: [initialJob],

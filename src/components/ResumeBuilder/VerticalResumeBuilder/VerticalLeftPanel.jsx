@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function VerticalLeftPanel({ 
   resumeData, 
@@ -17,7 +17,76 @@ function VerticalLeftPanel({
   onAIGenerateText,
   isGenerating
 }) {
-  
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Fetch only essential user data from backend
+  const fetchEssentialUserData = async () => {
+    try {
+      setIsLoading(true);
+      const token = localStorage.getItem('token');
+      
+      const response = await fetch('http://localhost:5000/api/user/profile', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        const userData = await response.json();
+        console.log('Fetched essential user data for vertical resume:', userData);
+        
+        // Fill only essential fields if they are empty
+        if (userData.personalInfo) {
+          // Only fill if current field is empty
+          if (userData.personalInfo.fullName && !resumeData.personalDetails.name) {
+            onInputChange('personalDetails', 'name', userData.personalInfo.fullName);
+          }
+          
+          if (userData.personalInfo.email && !resumeData.personalDetails.email) {
+            onInputChange('personalDetails', 'email', userData.personalInfo.email);
+          }
+          
+          if (userData.personalInfo.phone && !resumeData.personalDetails.phone) {
+            onInputChange('personalDetails', 'phone', userData.personalInfo.phone);
+          }
+          
+          if (userData.personalInfo.address && !resumeData.personalDetails.address) {
+            onInputChange('personalDetails', 'address', userData.personalInfo.address);
+          }
+
+          // Fill LinkedIn if available and empty
+          if (userData.personalInfo.linkedin && !resumeData.personalDetails.linkedin) {
+            onInputChange('personalDetails', 'linkedin', userData.personalInfo.linkedin);
+          }
+
+          // Fill Portfolio if available and empty
+          if (userData.personalInfo.portfolio && !resumeData.personalDetails.portfolio) {
+            onInputChange('personalDetails', 'portfolio', userData.personalInfo.portfolio);
+          }
+        }
+
+        // Fill professional summary if empty
+        if (userData.summary && !resumeData.summary) {
+          onInputChange('summary', null, userData.summary);
+        }
+      } else {
+        console.log('No user data found for vertical resume');
+      }
+    } catch (error) {
+      console.error('Error fetching user data for vertical resume:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Fetch essential data on component mount
+  useEffect(() => {
+    fetchEssentialUserData();
+  }, []);
+
   const handleDetailChange = (section, field, value) => {
     onInputChange(section, field, value);
   };
@@ -37,6 +106,13 @@ function VerticalLeftPanel({
   return (
     <div className="vertical-left-panel">
       <h2>Vertical Resume Builder</h2>
+
+      {/* Loading indicator */}
+      {isLoading && (
+        <div className="loading-indicator">
+          <p>Loading your profile data...</p>
+        </div>
+      )}
       
       {/* Theme Section */}
       <div className="input-section">
@@ -64,12 +140,42 @@ function VerticalLeftPanel({
       {/* Personal Details Section */}
       <div className="input-section">
         <h3>Personal Details</h3>
-        <input type="text" placeholder="Full Name" value={resumeData.personalDetails.name} onChange={(e) => handleDetailChange('personalDetails', 'name', e.target.value)} />
-        <input type="email" placeholder="Email Address" value={resumeData.personalDetails.email} onChange={(e) => handleDetailChange('personalDetails', 'email', e.target.value)} />
-        <input type="tel" placeholder="Phone Number" value={resumeData.personalDetails.phone} onChange={(e) => handleDetailChange('personalDetails', 'phone', e.target.value)} />
-        <input type="text" placeholder="Address (City, State)" value={resumeData.personalDetails.address} onChange={(e) => handleDetailChange('personalDetails', 'address', e.target.value)} />
-        <input type="text" placeholder="LinkedIn URL" value={resumeData.personalDetails.linkedin} onChange={(e) => handleDetailChange('personalDetails', 'linkedin', e.target.value)} />
-        <input type="text" placeholder="Portfolio URL" value={resumeData.personalDetails.portfolio} onChange={(e) => handleDetailChange('personalDetails', 'portfolio', e.target.value)} />
+        <input 
+          type="text" 
+          placeholder="Full Name" 
+          value={resumeData.personalDetails.name} 
+          onChange={(e) => handleDetailChange('personalDetails', 'name', e.target.value)} 
+        />
+        <input 
+          type="email" 
+          placeholder="Email Address" 
+          value={resumeData.personalDetails.email} 
+          onChange={(e) => handleDetailChange('personalDetails', 'email', e.target.value)} 
+        />
+        <input 
+          type="tel" 
+          placeholder="Phone Number" 
+          value={resumeData.personalDetails.phone} 
+          onChange={(e) => handleDetailChange('personalDetails', 'phone', e.target.value)} 
+        />
+        <input 
+          type="text" 
+          placeholder="Address (City, State)" 
+          value={resumeData.personalDetails.address} 
+          onChange={(e) => handleDetailChange('personalDetails', 'address', e.target.value)} 
+        />
+        <input 
+          type="text" 
+          placeholder="LinkedIn URL" 
+          value={resumeData.personalDetails.linkedin} 
+          onChange={(e) => handleDetailChange('personalDetails', 'linkedin', e.target.value)} 
+        />
+        <input 
+          type="text" 
+          placeholder="Portfolio URL" 
+          value={resumeData.personalDetails.portfolio} 
+          onChange={(e) => handleDetailChange('personalDetails', 'portfolio', e.target.value)} 
+        />
       </div>
 
       {/* Professional Summary Section WITH AI */}
@@ -123,7 +229,7 @@ function VerticalLeftPanel({
         <button type="button" onClick={() => onAddSectionItem('experience')}>+ Add Work Experience</button>
       </div>
 
-      {/* Education Section (No AI here, but you can add it if you want) */}
+      {/* Education Section */}
       <div className="input-section">
         <h3>Education</h3>
         {resumeData.education.map((edu, index) => (
@@ -141,7 +247,7 @@ function VerticalLeftPanel({
         <button type="button" onClick={() => onAddSectionItem('education')}>+ Add Education</button>
       </div>
 
-      {/* Skills Section (No AI here) */}
+      {/* Skills Section */}
       <div className="input-section">
         <h3>Skills</h3>
         {resumeData.skills.map((category, index) => (
@@ -178,7 +284,7 @@ function VerticalLeftPanel({
         <button type="button" onClick={() => onAddSectionItem('achievements')}>+ Add Achievement</button>
       </div>
 
-      {/* Certifications Section (No AI here) */}
+      {/* Certifications Section */}
       <div className="input-section">
         <h3>Certifications</h3>
         {resumeData.certifications.map((cert, index) => (

@@ -44,16 +44,16 @@ const TemplateSelector = ({ isOpen, onClose, currentTemplate }) => {
     },
     { 
       id: 'academic', 
-      name: 'Academic', 
+      name: 'Academic Scholar', 
       description: 'Designed for academic and research roles',
-      route: '/academic-resume',
+      route: '/academic-scholar',
       thumbnail: academicTemplate
     },
     { 
       id: 'startup', 
-      name: 'Startup', 
+      name: 'The Detailed Professional', 
       description: 'Modern and bold for tech and startups',
-      route: '/startup-resume',
+      route: '/detailed-pro',
       thumbnail: startupTemplate
     }
   ];
@@ -68,8 +68,13 @@ const TemplateSelector = ({ isOpen, onClose, currentTemplate }) => {
   return (
     <div className="template-selector-overlay" onClick={onClose}>
       <div className="template-selector-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="template-selector-header">
-          <h2>🎨 Choose Your Resume Template</h2>
+       <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px' }}>
+  <div className="template-selector-header" style={{ all: 'unset' }}>
+    <h2 style={{ margin: 0 }}>🎨 Choose Your Resume Template</h2>
+  </div>
+
+
+
           <button className="close-btn" onClick={onClose}>×</button>
         </div>
         <div className="templates-grid">

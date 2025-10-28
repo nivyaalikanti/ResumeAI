@@ -7,38 +7,38 @@ import TemplateSelector from '../../TemplateSelector';
 function VerticalResumeBuilder3() {
   // UPDATED: Initial state to match the "Academic Scholar" template structure
   const initialJob = {
-    title: 'Entry-Level IT Support Specialist',
-    company: 'Resume Worded',
-    location: 'New York, NY',
-    dates: 'November 2015 – Present',
-    responsibilities: 'Organized and presented training for over 300 employees.\nDeveloped and updated 30+ easy-to-understand training materials.',
+    title: '',
+    company: '',
+    location: '',
+    dates: '',
+    responsibilities: '',
   };
   const initialEducation = {
-    degree: 'Bachelor of Engineering',
-    institution: 'Resume Worded University',
-    dates: 'August 2010 – May 2014',
-    details: "Major in Computer Science. Minors in Mathematics and Economics. Fellow (GPA 3.8/4.0); Dean's List.",
+    degree: '',
+    institution: '',
+    dates: '',
+    details: "",
   };
   const initialSkill = {
-    category: 'Operations and IT Support',
-    items: 'Networking, Customer Service, Troubleshooting, System Administration',
+    category: '',
+    items: '',
   };
   const initialOther = {
-    title: 'AWS Certified Cloud Practitioner',
-    details: 'Issued 2020',
+    title: '',
+    details: '',
   };
 
   const [resumeData, setResumeData] = useState({
     personalDetails: {
-      name: 'First Last',
-      headline: 'Entry-Level IT Support Specialist',
-      phone: '+1-222-456-789',
-      email: 'email@example.com',
-      website: 'linkedin.com/in/username',
-      github: 'github.com/username',
-      location: 'Denver, OH',
+      name: '',
+      headline: '',
+      phone: '',
+      email: '',
+      website: '',
+      github: '',
+      location: '',
     },
-    summary: 'Entry-Level IT Support Specialist with eleven years of experience in maintaining computer systems, giving technical assistance to clients, and training clients on how to use newly installed applications. Works in teams of 12 to 15 team members.',
+    summary: '',
     experience: [initialJob],
     education: [initialEducation],
     skills: [initialSkill],

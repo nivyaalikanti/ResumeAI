@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Navbar.css';
 import logo from '../assets/images/beforelogo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { scroller } from 'react-scroll';
-import { useUser } from '../context/UserContext'; // Import the useUser hook
+import { useUser } from '../context/UserContext';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { currentUser, logout } = useUser(); // Get currentUser and logout function
+  const { currentUser, logout } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,10 +35,22 @@ const Header = () => {
     }
   };
 
+  const handleSave = () => {
+    console.log('Saving resume...');
+    alert('Resume saved successfully!');
+  };
+
+  const handleSaveAsPDF = () => {
+    console.log('Saving as PDF...');
+    alert('Downloading as PDF...');
+  };
+
   const handleLogout = () => {
     logout();
-    // Optional: redirect to home page after logout
-    // navigate('/');
+  };
+
+  const handleMyProfile = () => {
+    navigate('/complete-profile');
   };
 
   return (
@@ -66,19 +79,23 @@ const Header = () => {
       </nav>
       <div className="cta-buttons">
         {currentUser ? (
-          // Display user's name and logout option when logged in, but keep Start Free button
           <div className="user-menu">
             <span className="user-name">Hello, {currentUser.name}</span>
+            <button style={{padding:'12px', width:'100px'}}
+              onClick={handleMyProfile} 
+              className="primary-btn"
+              title="Go to your profile"
+            >
+              Profile
+            </button>
             <button onClick={handleLogout} className="logout-btn">
               Logout
             </button>
-            <Link to="/" className="start-free-btn">Start Free</Link>
           </div>
         ) : (
-          // Display both buttons when not logged in
           <>
             <Link to="/login" className="sign-in-btn">Sign In</Link>
-            <Link to="/" className="start-free-btn"  onClick={() => scrollTo('templates')}>Start Free</Link>
+            {/* <Link to="/signup" className="sign-up-btn">Sign Up</Link> */}
           </>
         )}
       </div>

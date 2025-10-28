@@ -14,7 +14,7 @@ const templates = [
     name: "Simple Professional",
     description: "Clean, modern design perfect for tech and corporate roles",
     rating: 4.9,
-    downloads: "12K+",
+    downloads: "12k+",
     tag: "Popular",
     image: modernTemplate,
     type: "horizontal"
@@ -112,7 +112,7 @@ function Templates({ onTemplateSelect }) {
           <h2>
             Choose from <span className="highlight-blue">Professional Templates</span>
           </h2>
-          <p>All our templates are ATS-optimized and designed by career experts to help you land your dream job.</p>
+          <p>All our templates are ATS-optimized and designed professionally to help you land your dream job.</p>
         </div>
         <div className="template-cards-grid">
           {templates.map((t, i) => (

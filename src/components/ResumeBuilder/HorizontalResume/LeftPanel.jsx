@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function LeftPanel({
   resumeData,
@@ -12,10 +12,68 @@ function LeftPanel({
   onMarginChange,
   accentColor,
   onColorChange,
-  // NEW props for AI feature
   onAIGenerateText,
   isGenerating
 }) {
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Fetch only essential user data from backend
+  const fetchEssentialUserData = async () => {
+    try {
+      setIsLoading(true);
+      const token = localStorage.getItem('token');
+      
+      const response = await fetch('http://localhost:5000/api/user/profile', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        const userData = await response.json();
+        console.log('Fetched essential user data:', userData);
+        
+        // Fill only essential fields if they are empty
+        if (userData.personalInfo) {
+          // Only fill if current field is empty
+          if (userData.personalInfo.fullName && !resumeData.personalDetails.name) {
+            onInputChange('personalDetails', 'name', userData.personalInfo.fullName);
+          }
+          
+          if (userData.personalInfo.email && !resumeData.personalDetails.email) {
+            onInputChange('personalDetails', 'email', userData.personalInfo.email);
+          }
+          
+          if (userData.personalInfo.phone && !resumeData.personalDetails.phone) {
+            onInputChange('personalDetails', 'phone', userData.personalInfo.phone);
+          }
+          
+          if (userData.personalInfo.address && !resumeData.personalDetails.address) {
+            onInputChange('personalDetails', 'address', userData.personalInfo.address);
+          }
+        }
+
+        // Fill professional summary if empty
+        if (userData.summary && !resumeData.summary) {
+          onInputChange('summary', null, userData.summary);
+        }
+      } else {
+        console.log('No user data found');
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Fetch essential data on component mount
+  useEffect(() => {
+    fetchEssentialUserData();
+  }, []);
 
   const handleDetailChange = (section, field, value) => {
     onInputChange(section, field, value);
@@ -37,6 +95,14 @@ function LeftPanel({
     <div className="left-panel">
       <br /><br /><br /><br />
       <h2>Enter Your Details</h2>
+      
+      {/* Loading indicator */}
+      {isLoading && (
+        <div className="loading-indicator">
+          <p>Loading your profile data...</p>
+        </div>
+      )}
+
       <div className="input-section">
         <h3>Theme</h3>
         <label>Accent Color:</label>
@@ -50,16 +116,41 @@ function LeftPanel({
 
       <div className="input-section">
         <h3>Personal Details</h3>
-        <input type="text" placeholder="Full Name" value={resumeData.personalDetails.name} onChange={(e) => handleDetailChange('personalDetails', 'name', e.target.value)} />
-        <input type="email" placeholder="Email Address" value={resumeData.personalDetails.email} onChange={(e) => handleDetailChange('personalDetails', 'email', e.target.value)} />
-        <input type="tel" placeholder="Phone Number" value={resumeData.personalDetails.phone} onChange={(e) => handleDetailChange('personalDetails', 'phone', e.target.value)} />
-        <input type="text" placeholder="Address (City, State)" value={resumeData.personalDetails.address} onChange={(e) => handleDetailChange('personalDetails', 'address', e.target.value)} />
+        <input 
+          type="text" 
+          placeholder="Full Name" 
+          value={resumeData.personalDetails.name} 
+          onChange={(e) => handleDetailChange('personalDetails', 'name', e.target.value)} 
+        />
+        <input 
+          type="email" 
+          placeholder="Email Address" 
+          value={resumeData.personalDetails.email} 
+          onChange={(e) => handleDetailChange('personalDetails', 'email', e.target.value)} 
+        />
+        <input 
+          type="tel" 
+          placeholder="Phone Number" 
+          value={resumeData.personalDetails.phone} 
+          onChange={(e) => handleDetailChange('personalDetails', 'phone', e.target.value)} 
+        />
+        <input 
+          type="text" 
+          placeholder="Address (City, State)" 
+          value={resumeData.personalDetails.address} 
+          onChange={(e) => handleDetailChange('personalDetails', 'address', e.target.value)} 
+        />
       </div>
 
       <div className="input-section">
         <h3>Professional Summary</h3>
         <div className="textarea-with-ai-btn">
-          <textarea placeholder="Write a brief professional summary..." rows="5" value={resumeData.summary} onChange={(e) => onInputChange('summary', null, e.target.value)} />
+          <textarea 
+            placeholder="Write a brief professional summary..." 
+            rows="5" 
+            value={resumeData.summary} 
+            onChange={(e) => onInputChange('summary', null, e.target.value)} 
+          />
           <button
             type="button"
             className="ai-btn"

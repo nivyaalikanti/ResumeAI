@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Signup.css';
-import { useUser } from '../context/UserContext.jsx'; // Import the useUser hook
+import { useUser } from '../context/UserContext.jsx';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -10,8 +10,9 @@ function Signup() {
     password: '',
     confirmPassword: ''
   });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useUser(); // Get login function from context
+  const { login } = useUser();
 
   const handleChange = (e) => {
     setFormData({
@@ -20,7 +21,7 @@ function Signup() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (formData.password !== formData.confirmPassword) {
@@ -33,27 +34,50 @@ function Signup() {
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    
-    if (users.find(user => user.email === formData.email)) {
-      alert("User already exists with this email!");
-      return;
+    setLoading(true);
+
+    try {
+      // ✅ CALL YOUR BACKEND API INSTEAD OF LOCALSTORAGE
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Registration failed');
+      }
+
+      // ✅ Save user data from backend response
+      const newUser = {
+        id: data.user.id,
+        name: formData.name, // You might want to add name field to your backend
+        email: data.user.email,
+        token: data.token
+      };
+
+      // ✅ Save token to localStorage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(newUser));
+      
+      login(newUser); // Use context login function
+
+      alert('Signup successful! Your account has been created in the database.');
+      navigate('/complete-profile'); // This redirects to profile page
+
+    } catch (error) {
+      console.error('Signup error:', error);
+      alert(error.message || 'Signup failed. Please try again.');
+    } finally {
+      setLoading(false);
     }
-
-    const newUser = {
-      id: Date.now(),
-      name: formData.name,
-      email: formData.email,
-      password: formData.password,
-      createdAt: new Date().toISOString()
-    };
-
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-    login(newUser); // Use context login function
-
-    alert('Signup successful!');
-    navigate('/');
   };
 
   return (
@@ -111,8 +135,12 @@ function Signup() {
             />
           </div>
 
-          <button type="submit" className="signup-btn">
-            Create Account
+          <button 
+            type="submit" 
+            className="signup-btn"
+            disabled={loading}
+          >
+            {loading ? 'Creating Account...' : 'Create Account'}
           </button>
         </form>
 

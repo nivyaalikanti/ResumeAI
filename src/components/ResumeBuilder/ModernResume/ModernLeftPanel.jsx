@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ModernLeftPanel({ 
   resumeData, 
@@ -12,7 +12,74 @@ function ModernLeftPanel({
   accentColor,
   onColorChange
 }) {
-  
+  const [loading, setLoading] = useState(true);
+
+  // ✅ AUTO-LOAD ONLY ESSENTIAL USER DATA WHEN COMPONENT MOUNTS
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        console.log('🔍 Loading essential user data in ModernLeftPanel...');
+        
+        if (!token) {
+          console.log('No token found, using empty data');
+          setLoading(false);
+          return;
+        }
+
+        const response = await fetch('http://localhost:5000/api/user/profile', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        
+        if (response.ok) {
+          const userData = await response.json();
+          console.log('✅ Essential user data loaded in ModernLeftPanel:', userData);
+          
+          // ✅ AUTO-FILL ONLY ESSENTIAL PERSONAL DETAILS
+          if (userData.personalInfo) {
+            const personalInfo = userData.personalInfo;
+            if (personalInfo.fullName && !resumeData.personalDetails.name) {
+              onInputChange('personalDetails', 'name', personalInfo.fullName);
+            }
+            if (personalInfo.email && !resumeData.personalDetails.email) {
+              onInputChange('personalDetails', 'email', personalInfo.email);
+            }
+            if (personalInfo.phone && !resumeData.personalDetails.phone) {
+              onInputChange('personalDetails', 'phone', personalInfo.phone);
+            }
+            if (personalInfo.address && !resumeData.personalDetails.address) {
+              onInputChange('personalDetails', 'address', personalInfo.address);
+            }
+          }
+
+          // ✅ AUTO-FILL ABOUT ME/SUMMARY
+          if (userData.summary && !resumeData.about) {
+            onInputChange('about', null, userData.summary);
+          }
+
+          // ❌ REMOVED AUTO-FILLING FOR ALL OTHER SECTIONS:
+          // - Experience
+          // - Education
+          // - Skills
+          // - References
+          // Let user enter these manually
+
+          console.log('✅ Essential user data auto-filled in modern template!');
+        } else {
+          console.log('❌ Failed to load user data');
+        }
+      } catch (error) {
+        console.error('❌ Error loading user data in ModernLeftPanel:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadUserData();
+  }, [onInputChange, onArrayItemChange, onSkillChange, onAddSectionItem, onRemoveSectionItem]);
+
   const handleDetailChange = (section, field, value) => {
     onInputChange(section, field, value);
   };
@@ -24,6 +91,30 @@ function ModernLeftPanel({
   const handleSkillsChange = (index, value) => {
     onSkillChange(index, value);
   };
+
+  // ✅ SHOW LOADING STATE
+  if (loading) {
+    return (
+      <div className="modern-left-panel">
+        <h2>Modern Resume Builder</h2>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '200px',
+          fontSize: '16px',
+          color: '#666',
+          flexDirection: 'column'
+        }}>
+          <div style={{ marginBottom: '15px' }}>🔄</div>
+          <div>Loading your saved data...</div>
+          <div style={{ fontSize: '14px', color: '#999', marginTop: '10px' }}>
+            Please wait while we fetch your information
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="modern-left-panel">

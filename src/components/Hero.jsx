@@ -36,8 +36,8 @@ function Hero() {
 
         {/* Subtext */}
         <p>
-          Create professional, ATS-optimized resumes with real-time AI guidance,
-          instant feedback, and proven templates trusted by top companies.
+          Craft a professional resume with AI guidance and our ATS-friendly templates. Get real-time suggestions as you build to help your resume stand out.
+        
         </p>
 
         {/* Buttons */}
