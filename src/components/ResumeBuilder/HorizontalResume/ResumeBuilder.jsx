@@ -200,7 +200,6 @@ function ResumeBuilder() {
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
   // NEW: AI generation function using Gemini API
-  // NEW: AI generation function using Gemini API
 const handleAIGenerateText = async (section, index, field, currentText) => {
   if (isGenerating) return;
 
