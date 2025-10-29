@@ -196,10 +196,9 @@ function ResumeBuilder() {
     setAccentColor(e.target.value);
   };
 
-  // Helper function for exponential backoff delay
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-  // NEW: AI generation function using Gemini API
+  // AI generation function using Gemini API
 const handleAIGenerateText = async (section, index, field, currentText) => {
   if (isGenerating) return;
 

@@ -40,9 +40,7 @@ const [hoverRating, setHoverRating] = React.useState(0);
       pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
     };
     
-    // Use the new library to generate the PDF
     html2pdf().set(options).from(element).save().then(() => {
-      // Restore original styles after PDF generation
       element.style.cssText = originalStyle;
        setShowRatingModal(true);
     });
